@@ -1,0 +1,6 @@
+__pycache__/
+Jsons/*.json
+downloads/
+gitstuff/pgvector/
+*.tar.gz
+install_log.txt

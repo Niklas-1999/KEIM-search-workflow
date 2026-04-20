@@ -1,0 +1,7 @@
+ollama
+httpx
+psycopg[binary]
+beautifulsoup4
+numpy
+rich
+pypdf

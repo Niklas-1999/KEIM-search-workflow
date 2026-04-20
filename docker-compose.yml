@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: research_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: research
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - "C:/Users/nmple/Documents/SearXNG_config/settings.yml:/etc/searxng/settings.yml:ro"
+      - searxng_data:/var/lib/searxng
+    environment:
+      # optional, tells SearXNG it’s running in docker
+      SEARX_INSTANCE_NAME: "local"
+      SEARX_SITE_URL: "http://localhost:8080"
+
+volumes:
+  pgdata:
+  searxng_data:
